@@ -1,8 +1,7 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
+import org.apache.commons.lang3.ArrayUtils;
+
 
 import java.util.Scanner;
 
@@ -13,31 +12,19 @@ public class App {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
         System.out.println("0 - Exit");
 
         Scanner scanner = new Scanner(System.in);
 
         String choice = scanner.next();
         System.out.println("Your choice: " + choice);
-
-        switch (choice) {
-            case "0":
-                break;
-            case "1":
-                System.out.println("Welcome to the Brain Games!");
-                Greet.greet();
-                break;
-            case "2":
-                Even.even();
-                break;
-            case "3":
-                Calc.calc();
-                break;
-            case "4":
-                GCD.startGcd();
-                break;
-            default:
-                break;
+        String[] gameNumbers = {"2", "3", "4", "5"};
+        if (choice.equals("1")) {
+            Greet.greet();
+        } else if (ArrayUtils.contains(gameNumbers, choice)) {
+            Engine.startGame(choice);
         }
+
     }
 }
