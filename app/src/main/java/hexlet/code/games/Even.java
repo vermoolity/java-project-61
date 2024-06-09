@@ -1,31 +1,18 @@
-package hexlet.code;
+package hexlet.code.games;
+
+import hexlet.code.Engine;
+import hexlet.code.Greet;
 
 import java.util.Scanner;
 
 public class Even {
 
-    private static boolean evenGame() {
-        Scanner scanner = new Scanner(System.in);
+    public static boolean evenGame() {
 
         var number = (int) (Math.random() * 100) + 1;
         System.out.println("Question: " + number);
-
-        String userAnswer = scanner.next();
-
-        System.out.println("Your answer: " + number);
-
-        boolean result = false;
         String correctAnswer = number % 2 == 0 ? "yes" : "no";
-
-        if (userAnswer.equals(correctAnswer)) {
-            result = true;
-            System.out.println("Correct!");
-
-        } else {
-            System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
-                                + correctAnswer + "\'.");
-        }
-        return result;
+        return Engine.answerUser(correctAnswer);
     }
 
 
