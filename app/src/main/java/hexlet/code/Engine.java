@@ -1,22 +1,21 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Progression;
+import hexlet.code.games.*;
 
 import java.util.Scanner;
 
 public class Engine {
+    // Логика ответов пользователя.
     public static boolean answerUser(String correctAnswer) {
+
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.next();
         System.out.println("Your answer: " + userAnswer);
-
         boolean result = false;
-
+        // Проверка ответа пользователя.
         if (userAnswer.equals(correctAnswer)) {
             result = true;
+            // Меняем флаг на true.
             System.out.println("Correct!");
 
         } else {
@@ -25,10 +24,14 @@ public class Engine {
         }
         return result;
     }
+    // Логика начало игры.
     public static void startGame(String choice) {
+        // Привествуем игрока и узнаём имя
         String name = Greet.greeting();
         boolean result = false;
+
         for (var i = 0; i < 3; i++) {
+            // включение выбранной игрыю
             switch (choice) {
                 case "2":
                     System.out.println("Answer \'yes\' if the number is even, otherwise answer \'no\'.");
@@ -45,16 +48,21 @@ public class Engine {
                 case "5":
                     System.out.println("What number is missing in the progression?");
                     result = Progression.progression();
+                case "6":
+                    System.out.println("Answer \'yes\' if the number is even, otherwise answer \'no\'.");
+                    result = Prime.prime();
                     break;
                 default:
                     break;
             }
+            // Продолжаем игру если пользователь ответил правельно, иначе цикл обрывается.
             if (result) {
                 continue;
             } else {
                 break;
             }
         }
+        // Узнаём выиграл ли пользователь в игре.
         if (result) {
             System.out.println("Congratulations, " + name + "!");
         } else {

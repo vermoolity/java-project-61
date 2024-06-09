@@ -4,6 +4,7 @@ import hexlet.code.Engine;
 
 public class GCD {
     private static int randomEvenNumber() {
+
         int evenNumber = 1;
         while (evenNumber % 2 != 0) {
             evenNumber = (int) (Math.random() * 100) + 1;
@@ -22,6 +23,7 @@ public class GCD {
             numberTwo = a;
         }
         String correctAnswer = numberOne + "";
+        // Возвращаем правельный ответ.
         return Engine.answerUser(correctAnswer);
     }
 }
