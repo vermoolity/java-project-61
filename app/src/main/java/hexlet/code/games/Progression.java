@@ -11,7 +11,7 @@ public class Progression {
         var random = new Random();
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
         int plusNumber = (int) (Math.random() * 11) + 1;
-        ArrayList numbers = new ArrayList<String>();
+        ArrayList<String> numbers = new ArrayList<String>();
         // Сгенерируем случайное первое число прогресии.
         var sequentialNumber = (int) (Math.random() * 101) + 1;
         // Сгенерируем случайную длину прогрессии.

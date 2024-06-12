@@ -1,7 +1,10 @@
 package hexlet.code;
-
-import hexlet.code.games.*;
-
+import hexlet.code.games.Even;
+import hexlet.code.games.Prime;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Progression;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Engine {
@@ -29,27 +32,30 @@ public class Engine {
         // Привествуем игрока и узнаём имя
         String name = Greet.greeting();
         boolean result = false;
+        var message = Map.of(
+                "2", "Answer \'yes\' if the number is even, otherwise answer \'no\'.",
+                "3", "What is the result of the expression?",
+                "4", "Find the greatest common divisor of given numbers.",
+                "5", "What number is missing in the progression?",
+                "6", "Answer \'yes\' if the number is even, otherwise answer \'no\'.");
+        System.out.println(message.get(choice));
 
         for (var i = 0; i < 3; i++) {
-            // включение выбранной игрыю
+            // включение выбранной игры.
             switch (choice) {
                 case "2":
-                    System.out.println("Answer \'yes\' if the number is even, otherwise answer \'no\'.");
                     result = Even.even();
                     break;
                 case "3":
-                    System.out.println("What is the result of the expression?");
                     result = Calc.calculator();
                     break;
                 case "4":
-                    System.out.println("Find the greatest common divisor of given numbers.");
                     result = GCD.gcd();
                     break;
                 case "5":
-                    System.out.println("What number is missing in the progression?");
                     result = Progression.progression();
+                    break;
                 case "6":
-                    System.out.println("Answer \'yes\' if the number is even, otherwise answer \'no\'.");
                     result = Prime.prime();
                     break;
                 default:
@@ -68,5 +74,6 @@ public class Engine {
         } else {
             System.out.println("Let's try again, " + name + "!");
         }
+
     }
 }
