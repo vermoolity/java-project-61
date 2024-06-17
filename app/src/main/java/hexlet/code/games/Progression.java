@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Progression {
-    public static boolean progression() {
-
+    private static String[] creatingAnExample() {
         var random = new Random();
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
         int plusNumber = (int) (Math.random() * 11) + 1;
@@ -23,7 +22,7 @@ public class Progression {
         }
         // Случаиное число из списка которое нужно найти.
         var secretNumber = numbers.get(random.nextInt(numbers.size()));
-        var question = "Question:";
+        var question = "";
         for (var number : numbers) {
             if (number.equals(secretNumber)) {
                 question = question + " " + "..";
@@ -31,8 +30,27 @@ public class Progression {
                 question = question + " " + number;
             }
         }
-        System.out.println(question);
-        // Возвращаем правельный ответ.
-        return Engine.answerUser(secretNumber + "");
+        return new String[] {question, secretNumber};
+
+    }
+    /*
+    Метод вызывает движок и передает в него значение, такие как:
+    Строку которую нужно вывести
+    Пример
+    Правельный ответ на вопрос
+     */
+    public static void progression() {
+        String[] firstExampleAndAnswer = creatingAnExample();
+        String firstExample = firstExampleAndAnswer[0];
+        String firstCorrectNumber = firstExampleAndAnswer[1];
+        String[] secondExampleAndAnswer = creatingAnExample();
+        String secondExample = secondExampleAndAnswer[0];
+        String secondCorrectNumber = secondExampleAndAnswer[1];
+        String[] thirdExampleAndAnswer = creatingAnExample();
+        String thirdExample = thirdExampleAndAnswer[0];
+        String thirdCorrectNumber = thirdExampleAndAnswer[1];
+        var question = "Find the greatest common divisor of given numbers.";
+        Engine.engine(question, firstExample, firstCorrectNumber, secondExample, secondCorrectNumber,
+                thirdExample, thirdCorrectNumber);
     }
 }
