@@ -18,6 +18,7 @@ public class Engine {
         System.out.println("Question: " + example);
 
         String userAnswer = scanner.next();
+        System.out.println("Your answer: " + userAnswer);
         boolean flag;
         //Проверяем дал ли пользователь верный ответ.
         if (userAnswer.equals(correctAnswer)) {

@@ -13,7 +13,7 @@ public class Even {
     }
     public static void even() {
 
-        var question = "Answer \\'yes\\' if the number is even, otherwise answer \\'no\\'.";
+        var question = "Answer \'yes\' if the number is even, otherwise answer \'no\'.";
 
         Engine.engine(question,
                 isEven(),
