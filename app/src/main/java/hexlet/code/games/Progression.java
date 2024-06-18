@@ -1,18 +1,19 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Progression {
-    private static String[] creatingAnExample() {
+    private static String[] progressionExampleAndAnswer() {
         var random = new Random();
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
         int plusNumber = (int) (Math.random() * 11) + 1;
         ArrayList<String> numbers = new ArrayList<String>();
         // Сгенерируем случайное первое число прогресии.
-        var sequentialNumber = (int) (Math.random() * 101) + 1;
+        var sequentialNumber = RandomNumber.randomNumber();
         // Сгенерируем случайную длину прогрессии.
         var randomSize = (int) (Math.random() * 6) + 5;
         // Сгенерируеи прогрессию в виде списка.
@@ -33,29 +34,13 @@ public class Progression {
         return new String[] {question, secretNumber};
 
     }
-    /*
-    Метод вызывает движок и передает в него значение, такие как:
-    Строку которую нужно вывести
-    Пример
-    Правельный ответ на вопрос
-     */
+
     public static void progression() {
-
-        String[] firstExampleAndAnswer = creatingAnExample();
-        String firstExample = firstExampleAndAnswer[0];
-        String firstCorrectNumber = firstExampleAndAnswer[1];
-
-        String[] secondExampleAndAnswer = creatingAnExample();
-        String secondExample = secondExampleAndAnswer[0];
-        String secondCorrectNumber = secondExampleAndAnswer[1];
-
-        String[] thirdExampleAndAnswer = creatingAnExample();
-        String thirdExample = thirdExampleAndAnswer[0];
-        String thirdCorrectNumber = thirdExampleAndAnswer[1];
 
         var question = "Find the greatest common divisor of given numbers.";
 
-        Engine.engine(question, firstExample, firstCorrectNumber, secondExample, secondCorrectNumber,
-                thirdExample, thirdCorrectNumber);
+        Engine.engine(question, progressionExampleAndAnswer(),
+                progressionExampleAndAnswer(),
+                progressionExampleAndAnswer());
     }
 }

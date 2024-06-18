@@ -8,8 +8,11 @@ public class Engine {
     Если ответ пользователя неверный то метод возвращает false.
      */
 
-    private static boolean answer(String example, String correctAnswer) {
+    private static boolean answer(String[] answerAndExample) {
         Scanner scanner = new Scanner(System.in);
+
+        var example = answerAndExample[0];
+        var correctAnswer = answerAndExample[1];
 
         //Выводит вопрос.
         System.out.println("Question: " + example);
@@ -33,18 +36,15 @@ public class Engine {
     }
     //Движок игры.
     public static void engine(String question,
-                              String firstExample,
-                              String firstCorrectAnswer,
-                              String secondExample,
-                              String secondCorrectAnswer,
-                              String thirdExample,
-                              String thirdCorrectAnswer) {
+                              String[] firstaAnswerAndExample,
+                              String[] secondAnswerAndExample,
+                              String[] thirdAnswerAndExample) {
         String name = Greet.greeting();
         //Выводит передоваемую строку.
         System.out.println(question);
-        if (answer(firstExample, firstCorrectAnswer)
-                && answer(secondExample, secondCorrectAnswer)
-                && answer(thirdExample, thirdCorrectAnswer)) {
+        if (answer(firstaAnswerAndExample)
+                && answer(secondAnswerAndExample)
+                && answer(thirdAnswerAndExample)) {
             //Выводит строку если пользователь дал верные ответы.
             System.out.println("Congratulations, " + name + "!");
         } else {

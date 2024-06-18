@@ -1,10 +1,12 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.RandomNumber;
+
 import java.util.Random;
 public class Calc {
 
-    private static String[] creatingAnExample() {
+    private static String[] calculatorExampleAndAnswer() {
         var random = new Random();
 
         String[] operators = {"-",  "+", "*"};
@@ -13,9 +15,9 @@ public class Calc {
         var operator = operators[random.nextInt(operators.length)];
 
         // Сгенерируем случайное первое число.
-        int numberOne = (int) (Math.random() * 101) + 1;
+        int numberOne = RandomNumber.randomNumber();
         // Сгенерируем случайное второе число.
-        int numberTwo = (int) (Math.random() * 101) + 1;
+        int numberTwo = RandomNumber.randomNumber();
         String correctAnswer = null;
 
         if (operator.equals("-")) {
@@ -30,30 +32,13 @@ public class Calc {
         return new String[] {example, correctAnswer};
 
     }
-    /*
-    Метод вызывает движок и передает в него значение, такие как:
-    Строку которую нужно вывести
-    Пример
-    Правельный ответ на вопрос
-    */
     public static void calculator() {
-
-        String[] firstExampleAndAnswer = creatingAnExample();
-        String firstExample = firstExampleAndAnswer[0];
-        String firstCorrectNumber = firstExampleAndAnswer[1];
-
-        String[] secondExampleAndAnswer = creatingAnExample();
-        String secondExample = secondExampleAndAnswer[0];
-        String secondCorrectNumber = secondExampleAndAnswer[1];
-
-        String[] thirdExampleAndAnswer = creatingAnExample();
-        String thirdExample = thirdExampleAndAnswer[0];
-        String thirdCorrectNumber = thirdExampleAndAnswer[1];
-
         var question = "What is the result of the expression?";
 
-        Engine.engine(question, firstExample, firstCorrectNumber, secondExample, secondCorrectNumber,
-                thirdExample, thirdCorrectNumber);
+        Engine.engine(question,
+                calculatorExampleAndAnswer(),
+                calculatorExampleAndAnswer(),
+                calculatorExampleAndAnswer());
     }
 
 }
