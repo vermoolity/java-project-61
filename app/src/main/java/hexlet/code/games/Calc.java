@@ -37,16 +37,21 @@ public class Calc {
     Правельный ответ на вопрос
     */
     public static void calculator() {
+
         String[] firstExampleAndAnswer = creatingAnExample();
         String firstExample = firstExampleAndAnswer[0];
         String firstCorrectNumber = firstExampleAndAnswer[1];
+
         String[] secondExampleAndAnswer = creatingAnExample();
         String secondExample = secondExampleAndAnswer[0];
         String secondCorrectNumber = secondExampleAndAnswer[1];
+
         String[] thirdExampleAndAnswer = creatingAnExample();
         String thirdExample = thirdExampleAndAnswer[0];
         String thirdCorrectNumber = thirdExampleAndAnswer[1];
+
         var question = "What is the result of the expression?";
+
         Engine.engine(question, firstExample, firstCorrectNumber, secondExample, secondCorrectNumber,
                 thirdExample, thirdCorrectNumber);
     }

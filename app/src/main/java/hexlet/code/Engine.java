@@ -42,24 +42,14 @@ public class Engine {
         String name = Greet.greeting();
         //Выводит передоваемую строку.
         System.out.println(question);
-
-        if (answer(firstExample, firstCorrectAnswer)) {
-            if (answer(secondExample, secondCorrectAnswer)) {
-                if (answer(thirdExample, thirdCorrectAnswer)) {
-                    //Выводит строку если на все примеры пользователь дал верный ответ.
-                    System.out.println("Congratulations, " + name + "!");
-                } else {
-                    //Выводит строку если пользователь дал неверный ответ на последний пример.
-                    System.out.println("Let's try again, " + name + "!");
-                }
-            } else {
-                //Выводит строку если пользователь дал неверный ответ на второй пример.
-                System.out.println("Let's try again, " + name + "!");
-            }
+        if (answer(firstExample, firstCorrectAnswer)
+                && answer(secondExample, secondCorrectAnswer)
+                && answer(thirdExample, thirdCorrectAnswer)) {
+            //Выводит строку если пользователь дал верные ответы.
+            System.out.println("Congratulations, " + name + "!");
         } else {
-            //Выводит строку если пользователь дал неверный ответ на первый пример.
+            //Выводит строку если пользователь дал неверный ответ на пример.
             System.out.println("Let's try again, " + name + "!");
         }
-
     }
 }

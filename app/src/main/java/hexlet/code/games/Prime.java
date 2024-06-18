@@ -11,7 +11,7 @@ public class Prime {
     //Метод возвращает ответ на вопрос простое число или нет.
     private static String isPrime(String stringNumber) {
         var number = Integer.parseInt(stringNumber);
-        String correctAnswer = "Yes";
+        String correctAnswer = "yes";
         for (int i = 2; i < number / 2; i++) {
             if (number % i == 0) {
                 correctAnswer = "no";
@@ -27,13 +27,18 @@ public class Prime {
     Правельный ответ на вопрос
     */
     public static void prime() {
+
         String firstNumber = randomNumber();
         String firstCorrectNumber = isPrime(firstNumber);
+
         String secondNumber = randomNumber();
         String secondCorrectNumber = isPrime(secondNumber);
+
         String thirdNumber = randomNumber();
         String thirdCorrectNumber = isPrime(thirdNumber);
+
         var question = "Answer \'yes\' if given number is prime. Otherwise answer \'no\'.";
+
         Engine.engine(question, firstNumber, firstCorrectNumber, secondNumber, secondCorrectNumber,
                 thirdNumber, thirdCorrectNumber);
     }

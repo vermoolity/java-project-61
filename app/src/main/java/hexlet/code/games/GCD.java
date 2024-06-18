@@ -15,13 +15,13 @@ public class GCD {
         var numberOne = randomEvenNumber();
         var numberTwo = randomEvenNumber();
 
+        String example = numberOne + " " + numberTwo;
         //Узнаем на какое наибольшее число делятся данные числа.
         while (numberTwo != 0) {
             int a = numberOne % numberTwo;
             numberOne = numberTwo;
             numberTwo = a;
         }
-        String example = numberOne + " " + numberTwo;
         String correctAnswer = numberOne + "";
 
         //Возвращаем пример и верный ответ.
@@ -34,16 +34,21 @@ public class GCD {
     Правельный ответ на вопрос
     */
     public static void gcd() {
+
         String[] firstExampleAndAnswer = creatingAnExample();
         String firstExample = firstExampleAndAnswer[0];
         String firstCorrectNumber = firstExampleAndAnswer[1];
+
         String[] secondExampleAndAnswer = creatingAnExample();
         String secondExample = secondExampleAndAnswer[0];
         String secondCorrectNumber = secondExampleAndAnswer[1];
+
         String[] thirdExampleAndAnswer = creatingAnExample();
         String thirdExample = thirdExampleAndAnswer[0];
         String thirdCorrectNumber = thirdExampleAndAnswer[1];
+
         var question = "Find the greatest common divisor of given numbers.";
+
         Engine.engine(question, firstExample, firstCorrectNumber, secondExample, secondCorrectNumber,
                 thirdExample, thirdCorrectNumber);
     }

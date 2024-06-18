@@ -21,17 +21,19 @@ public class Even {
     Правельный ответ на вопрос
      */
     public static void even() {
+
         String firstNumber = randomNumber();
         String firstCorrectNumber = isEven(firstNumber);
+
         String secondNumber = randomNumber();
         String secondCorrectNumber = isEven(secondNumber);
+
         String thirdNumber = randomNumber();
         String thirdCorrectNumber = isEven(thirdNumber);
+
         var question = "Answer \\'yes\\' if the number is even, otherwise answer \\'no\\'.";
+
         Engine.engine(question, firstNumber, firstCorrectNumber, secondNumber, secondCorrectNumber,
                 thirdNumber, thirdCorrectNumber);
-
-
-
     }
 }
