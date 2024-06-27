@@ -15,9 +15,9 @@ public class Calc {
         var operator = operators[random.nextInt(operators.length)];
 
         // Сгенерируем случайное первое число.
-        int numberOne = RandomNumber.naturalOrNegativeRandomNumber();
+        int numberOne = RandomNumber.randomNumber();
         // Сгенерируем случайное второе число.
-        int numberTwo = RandomNumber.naturalOrNegativeRandomNumber();
+        int numberTwo = RandomNumber.randomNumber();
         String correctAnswer = null;
 
         if (operator.equals("-")) {
