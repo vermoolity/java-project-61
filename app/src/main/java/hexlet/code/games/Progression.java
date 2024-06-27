@@ -37,7 +37,7 @@ public class Progression {
 
     public static void progression() {
 
-        var question = "Find the greatest common divisor of given numbers.";
+        var question = "What number is missing in the progression?";
 
         Engine.engine(question, progressionExampleAndAnswer(),
                 progressionExampleAndAnswer(),
