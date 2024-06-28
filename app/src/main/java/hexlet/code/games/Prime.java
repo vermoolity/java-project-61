@@ -1,24 +1,29 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
+import hexlet.code.RandomNumber;
 
 public class Prime {
-    public static boolean prime() {
 
-        // Сгенерируем случайное число.
-        var number = (int) (Math.random() * 101) + 1;
-
-        System.out.println("Question: " + number);
-        String correctAnswer = "Yes";
-        // Узнаем число number простое или нет.
-        for (int i = 2; i < number / 2 ; i++) {
+    private static String[] primeExampleAndAnswer() {
+        int number = RandomNumber.randomNumber();
+        String correctAnswer = "yes";
+        for (int i = 2; i < number / 2; i++) {
             if (number % i == 0) {
                 correctAnswer = "no";
             }
         }
-        // Возвращаем правельный ответ.
-        return Engine.answerUser(correctAnswer);
+        String example = number + "";
+        //Возвращает ответ.
+        return new String[] {example, correctAnswer};
+    }
+    public static void prime() {
 
+        var question = "Answer \'yes\' if given number is prime. Otherwise answer \'no\'.";
+
+        Engine.engine(question,
+                primeExampleAndAnswer(),
+                primeExampleAndAnswer(),
+                primeExampleAndAnswer());
     }
 }

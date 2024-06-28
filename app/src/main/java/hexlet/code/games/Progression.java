@@ -1,19 +1,19 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.RandomNumber;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Progression {
-    public static boolean progression() {
-
+    private static String[] progressionExampleAndAnswer() {
         var random = new Random();
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
         int plusNumber = (int) (Math.random() * 11) + 1;
-        ArrayList numbers = new ArrayList<String>();
+        ArrayList<String> numbers = new ArrayList<String>();
         // Сгенерируем случайное первое число прогресии.
-        var sequentialNumber = (int) (Math.random() * 101) + 1;
+        var sequentialNumber = RandomNumber.randomNumber();
         // Сгенерируем случайную длину прогрессии.
         var randomSize = (int) (Math.random() * 6) + 5;
         // Сгенерируеи прогрессию в виде списка.
@@ -23,7 +23,7 @@ public class Progression {
         }
         // Случаиное число из списка которое нужно найти.
         var secretNumber = numbers.get(random.nextInt(numbers.size()));
-        var question = "Question:";
+        var question = "";
         for (var number : numbers) {
             if (number.equals(secretNumber)) {
                 question = question + " " + "..";
@@ -31,8 +31,16 @@ public class Progression {
                 question = question + " " + number;
             }
         }
-        System.out.println(question);
-        // Возвращаем правельный ответ.
-        return Engine.answerUser(secretNumber + "");
+        return new String[] {question, secretNumber};
+
+    }
+
+    public static void progression() {
+
+        var question = "What number is missing in the progression?";
+
+        Engine.engine(question, progressionExampleAndAnswer(),
+                progressionExampleAndAnswer(),
+                progressionExampleAndAnswer());
     }
 }

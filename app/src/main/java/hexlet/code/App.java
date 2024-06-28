@@ -1,33 +1,51 @@
 package hexlet.code;
 
-import org.apache.commons.lang3.ArrayUtils;
-
+import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         // Выводим список игр.
-        String[] startingLines = {"Please enter the game number and press Enter.", "1 - Greet", "2 - Even",
-                "3 - Calc", "4 - GCD", "5 - Progression", "6 - Prime", "0 - Exit"};
+        System.out.println("Please enter the game number and press Enter.");
+        String[] startingLines = {"1 - Greet", "2 - Even", "3 - Calc", "4 - GCD",
+                "5 - Progression", "6 - Prime"};
         for (var line : startingLines) {
             System.out.println(line);
         }
+        System.out.println("0 - Exit");
 
         Scanner scanner = new Scanner(System.in);
         //Пользователь делает свой выбор.
         String choice = scanner.next();
         System.out.println("Your choice: " + choice);
         System.out.println("");
-
-        String[] gameNumbers = {"2", "3", "4", "5", "6"};
-
-        // Проверяем присутсвует ли номер введенный пользователем
-        if (choice.equals("1")) {
-            Greet.greeting();
-
-        } else if (ArrayUtils.contains(gameNumbers, choice)) {
-            Engine.startGame(choice);
+        //Запуск игры.
+        switch (choice) {
+            case "1":
+                Greet.greeting();
+                break;
+            case "2":
+                Even.even();
+                break;
+            case "3":
+                Calc.calculator();
+                break;
+            case "4":
+                GCD.gcd();
+                break;
+            case "5":
+                Progression.progression();
+                break;
+            case "6":
+                Prime.prime();
+                break;
+            default:
+                break;
         }
 
     }

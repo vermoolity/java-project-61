@@ -1,18 +1,25 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.RandomNumber;
+
 import java.util.Random;
 public class Calc {
-    public static boolean calculator() {
+
+    private static String[] calculatorExampleAndAnswer() {
+        var random = new Random();
 
         String[] operators = {"-",  "+", "*"};
-        String correctAnswer = null;
-        var random = new Random();
+
+        //Сгенерируем случайный оператор.
         var operator = operators[random.nextInt(operators.length)];
-        // Сгенерируем случайное числа.
-        int numberOne = random.nextInt() % 100;
-        int numberTwo = random.nextInt() % 100;
-        // определяем случайнный оператор.
+
+        // Сгенерируем случайное первое число.
+        int numberOne = RandomNumber.randomNumber();
+        // Сгенерируем случайное второе число.
+        int numberTwo = RandomNumber.randomNumber();
+        String correctAnswer = null;
+
         if (operator.equals("-")) {
             correctAnswer = (numberOne - numberTwo) + "";
         } else if (operator.equals("+")) {
@@ -20,10 +27,16 @@ public class Calc {
         } else if (operator.equals("*")) {
             correctAnswer = (numberOne * numberTwo) + "";
         }
-
-        System.out.println("Question: " + numberOne + " " + operator + " " + numberTwo);
-        // Возвращаем правельный ответ.
-        return Engine.answerUser(correctAnswer);
+        String example = numberOne + " " + operator + " " + numberTwo;
+        //Возвращаем пример и правельный ответ.
+        return new String[] {example, correctAnswer};
     }
+    public static void calculator() {
+        var question = "What is the result of the expression?";
 
+        Engine.engine(question,
+                calculatorExampleAndAnswer(),
+                calculatorExampleAndAnswer(),
+                calculatorExampleAndAnswer());
+    }
 }
