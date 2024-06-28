@@ -1,55 +1,71 @@
 package hexlet.code;
+
+import hexlet.code.games.*;
+
 import java.util.Scanner;
 
 public class Engine {
-    /*
-    Метод который работает с пользователем.
-    Если ответ пользователя верный то метод возвращает true.
-    Если ответ пользователя неверный то метод возвращает false.
-     */
+    // Логика ответов пользователя.
+    public static boolean answerUser(String correctAnswer) {
 
-    private static boolean answer(String[] answerAndExample) {
         Scanner scanner = new Scanner(System.in);
-
-        var example = answerAndExample[0];
-        var correctAnswer = answerAndExample[1];
-
-        //Выводит вопрос.
-        System.out.println("Question: " + example);
-
         String userAnswer = scanner.next();
         System.out.println("Your answer: " + userAnswer);
-        boolean flag;
-        //Проверяем дал ли пользователь верный ответ.
+        boolean result = false;
+        // Проверка ответа пользователя.
         if (userAnswer.equals(correctAnswer)) {
-            flag = true;
-            //Если ответ верный выводим это.
+            result = true;
+            // Меняем флаг на true.
             System.out.println("Correct!");
 
         } else {
-            flag = false;
-            //Если ответ неверный выводим это.
             System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
                     + correctAnswer + "\'.");
         }
-        return flag;
-
+        return result;
     }
-    //Движок игры.
-    public static void engine(String question,
-                              String[] firstaAnswerAndExample,
-                              String[] secondAnswerAndExample,
-                              String[] thirdAnswerAndExample) {
+    // Логика начало игры.
+    public static void startGame(String choice) {
+        // Привествуем игрока и узнаём имя
         String name = Greet.greeting();
-        //Выводит передоваемую строку.
-        System.out.println(question);
-        if (answer(firstaAnswerAndExample)
-                && answer(secondAnswerAndExample)
-                && answer(thirdAnswerAndExample)) {
-            //Выводит строку если пользователь дал верные ответы.
+        boolean result = false;
+
+        for (var i = 0; i < 3; i++) {
+            // включение выбранной игрыю
+            switch (choice) {
+                case "2":
+                    System.out.println("Answer \'yes\' if the number is even, otherwise answer \'no\'.");
+                    result = Even.even();
+                    break;
+                case "3":
+                    System.out.println("What is the result of the expression?");
+                    result = Calc.calculator();
+                    break;
+                case "4":
+                    System.out.println("Find the greatest common divisor of given numbers.");
+                    result = GCD.gcd();
+                    break;
+                case "5":
+                    System.out.println("What number is missing in the progression?");
+                    result = Progression.progression();
+                case "6":
+                    System.out.println("Answer \'yes\' if the number is even, otherwise answer \'no\'.");
+                    result = Prime.prime();
+                    break;
+                default:
+                    break;
+            }
+            // Продолжаем игру если пользователь ответил правельно, иначе цикл обрывается.
+            if (result) {
+                continue;
+            } else {
+                break;
+            }
+        }
+        // Узнаём выиграл ли пользователь в игре.
+        if (result) {
             System.out.println("Congratulations, " + name + "!");
         } else {
-            //Выводит строку если пользователь дал неверный ответ на пример.
             System.out.println("Let's try again, " + name + "!");
         }
     }
