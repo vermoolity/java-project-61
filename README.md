@@ -15,3 +15,4 @@
 ![игра1](/assets/images/markdown/игра_5_поражение.png)
 ![игра1](/assets/images/markdown/игра_6_победа.png)
 ![игра1](/assets/images/markdown/игра_6_поражение.png)
+![игра1](/assets/images/markdown/игра_выход.png)
