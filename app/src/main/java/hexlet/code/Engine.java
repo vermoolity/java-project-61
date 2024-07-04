@@ -1,4 +1,5 @@
 package hexlet.code;
+import java.util.List;
 import java.util.Scanner;
 
 public class Engine {
@@ -8,44 +9,43 @@ public class Engine {
     Если ответ пользователя неверный то метод возвращает false.
      */
 
-    private static boolean answer(String[] answerAndExample) {
+    private static boolean userResponse(String question, String correctAnswer) {
         Scanner scanner = new Scanner(System.in);
 
-        var example = answerAndExample[0];
-        var correctAnswer = answerAndExample[1];
-
-        //Выводит вопрос.
-        System.out.println("Question: " + example);
+        //Выводит ворос.
+        System.out.println("Question: " + question);
 
         String userAnswer = scanner.next();
         System.out.println("Your answer: " + userAnswer);
-        boolean flag;
+        boolean result;
         //Проверяем дал ли пользователь верный ответ.
         if (userAnswer.equals(correctAnswer)) {
-            flag = true;
+            result = true;
             //Если ответ верный выводим это.
             System.out.println("Correct!");
 
         } else {
-            flag = false;
+            result = false;
             //Если ответ неверный выводим это.
             System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
                     + correctAnswer + "\'.");
         }
-        return flag;
+        return result;
 
     }
     //Движок игры.
-    public static void engine(String question,
-                              String[] firstaAnswerAndExample,
-                              String[] secondAnswerAndExample,
-                              String[] thirdAnswerAndExample) {
+    public static void engine(String rules, List<String[]> questionsAndAnswers) {
+        int numberOfRounds = 3;
         String name = Greet.greeting();
-        //Выводит передоваемую строку.
-        System.out.println(question);
-        if (answer(firstaAnswerAndExample)
-                && answer(secondAnswerAndExample)
-                && answer(thirdAnswerAndExample)) {
+
+        System.out.println(rules);
+        boolean flag = true;
+        for (var i = 0; i < numberOfRounds && flag; i++) {
+            var question = questionsAndAnswers.get(i)[0];
+            var correctAnswer = questionsAndAnswers.get(i)[1];
+            flag = userResponse(question, correctAnswer);
+        }
+        if (flag) {
             //Выводит строку если пользователь дал верные ответы.
             System.out.println("Congratulations, " + name + "!");
         } else {

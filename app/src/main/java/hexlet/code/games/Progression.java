@@ -4,27 +4,36 @@ import hexlet.code.Engine;
 import hexlet.code.RandomNumber;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Progression {
-    private static String[] progressionExampleAndAnswer() {
+    private static List<String> progression(int size, int firstNumber, int stepNumber) {
+        ArrayList<String> progression = new ArrayList<String>();
+
+        var sequentialNumber = firstNumber;
+        // Сгенерируеи прогрессию в виде списка.
+        for (var i = 0; i < size; i++) {
+            sequentialNumber = sequentialNumber + stepNumber;
+            progression.add(sequentialNumber + "");
+        }
+        // Случаиное число из списка которое нужно найти.
+        return progression;
+    }
+    private static String[] progressionQuestionAndAnswer() {
         var random = new Random();
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
-        int plusNumber = (int) (Math.random() * 11) + 1;
-        ArrayList<String> numbers = new ArrayList<String>();
+        int stepNumber = (int) (Math.random() * 11) + 1;
         // Сгенерируем случайное первое число прогресии.
-        var sequentialNumber = RandomNumber.randomNumber();
+        var firstNumber = RandomNumber.randomNumber();
         // Сгенерируем случайную длину прогрессии.
         var randomSize = (int) (Math.random() * 6) + 5;
         // Сгенерируеи прогрессию в виде списка.
-        for (var i = 0; i < randomSize; i++) {
-            sequentialNumber = sequentialNumber + plusNumber;
-            numbers.add(sequentialNumber + "");
-        }
+        List<String> progression = progression(randomSize, firstNumber, stepNumber);
         // Случаиное число из списка которое нужно найти.
-        var secretNumber = numbers.get(random.nextInt(numbers.size()));
+        var secretNumber = progression.get(random.nextInt(progression.size()));
         var question = "";
-        for (var number : numbers) {
+        for (var number : progression) {
             if (number.equals(secretNumber)) {
                 question = question + " " + "..";
             } else {
@@ -37,10 +46,13 @@ public class Progression {
 
     public static void progression() {
 
-        var question = "What number is missing in the progression?";
+        var gameRules = "What number is missing in the progression?";
 
-        Engine.engine(question, progressionExampleAndAnswer(),
-                progressionExampleAndAnswer(),
-                progressionExampleAndAnswer());
+        var numberOfRounds = 3;
+        ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
+        for (var i = 0; i != numberOfRounds; i++) {
+            questionsAndAnswers.add(progressionQuestionAndAnswer());
+        }
+        Engine.engine(gameRules, questionsAndAnswers);
     }
 }
