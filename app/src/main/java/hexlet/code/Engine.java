@@ -35,14 +35,19 @@ public class Engine {
     }
     //Движок игры.
     public static void engine(String rules, List<String[]> questionsAndAnswers) {
+        // Количество раундов игры.
         int numberOfRounds = 3;
+        // Приветсвуем пользователя и узнаем его имя.
         String name = Greet.greeting();
-
+        // Выводим на консоль правила игры.
         System.out.println(rules);
         boolean flag = true;
+        // Цикл продолжается пока не пройдут все раунды, и пока пользователь даёт верные ответыю
         for (var i = 0; i < numberOfRounds && flag; i++) {
+
             var question = questionsAndAnswers.get(i)[0];
             var correctAnswer = questionsAndAnswers.get(i)[1];
+
             flag = userResponse(question, correctAnswer);
         }
         if (flag) {

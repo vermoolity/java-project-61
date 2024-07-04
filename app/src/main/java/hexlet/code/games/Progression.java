@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Progression {
+
+    // Метод генерирует прогрессию.
     private static List<String> progression(int size, int firstNumber, int stepNumber) {
         ArrayList<String> progression = new ArrayList<String>();
 
@@ -17,17 +19,17 @@ public class Progression {
             sequentialNumber = sequentialNumber + stepNumber;
             progression.add(sequentialNumber + "");
         }
-        // Случаиное число из списка которое нужно найти.
+        // Возвращаем прогруссию.
         return progression;
     }
     private static String[] progressionQuestionAndAnswer() {
         var random = new Random();
-        // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
-        int stepNumber = (int) (Math.random() * 11) + 1;
         // Сгенерируем случайное первое число прогресии.
         var firstNumber = RandomNumber.randomNumber();
         // Сгенерируем случайную длину прогрессии.
-        var randomSize = (int) (Math.random() * 6) + 5;
+        var randomSize = RandomNumber.randomNumber(6, 5);
+        // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
+        var stepNumber  = RandomNumber.randomNumber(11, 1);
         // Сгенерируеи прогрессию в виде списка.
         List<String> progression = progression(randomSize, firstNumber, stepNumber);
         // Случаиное число из списка которое нужно найти.
@@ -41,18 +43,17 @@ public class Progression {
             }
         }
         return new String[] {question, secretNumber};
-
     }
 
     public static void progression() {
 
         var gameRules = "What number is missing in the progression?";
 
-        var numberOfRounds = 3;
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
-        for (var i = 0; i != numberOfRounds; i++) {
+        for (var i = 0; i != 3; i++) {
             questionsAndAnswers.add(progressionQuestionAndAnswer());
         }
+
         Engine.engine(gameRules, questionsAndAnswers);
     }
 }

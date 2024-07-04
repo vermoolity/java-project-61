@@ -6,8 +6,10 @@ import hexlet.code.RandomNumber;
 import java.util.ArrayList;
 import java.util.Random;
 public class Calc {
-    public static String[] calcCreatinganExampleAndAnswer(String operator, int numberOne, int numberTwo) {
+    public static String[] calcCreatingAnExampleAndAnswer(String operator, int numberOne, int numberTwo) {
+        // Определяем переданный оператор, и создаем пример.
         String correctAnswer = null;
+
         if (operator.equals("-")) {
             correctAnswer = (numberOne - numberTwo) + "";
         } else if (operator.equals("+")) {
@@ -16,6 +18,7 @@ public class Calc {
             correctAnswer = (numberOne * numberTwo) + "";
         }
         String example = numberOne + " " + operator + " " + numberTwo;
+
         return new String[] {example, correctAnswer};
     }
 
@@ -32,15 +35,17 @@ public class Calc {
         // Сгенерируем случайное второе число.
         int numberTwo = RandomNumber.naturalOrNegativeRandomNumber();
 
-        return calcCreatinganExampleAndAnswer(operator, numberOne, numberTwo);
+        return calcCreatingAnExampleAndAnswer(operator, numberOne, numberTwo);
     }
     public static void calculator() {
+
         var gameRules = "What is the result of the expression?";
-        var numberOfRounds = 3;
+
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
-        for (var i = 0; i != numberOfRounds; i++) {
+        for (var i = 0; i != 3; i++) {
             questionsAndAnswers.add(calcQuestionAndAnswer());
         }
+
         Engine.engine(gameRules, questionsAndAnswers);
 
     }
