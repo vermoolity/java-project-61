@@ -33,6 +33,7 @@ public class GCD {
         var gameRules = "Find the greatest common divisor of given numbers.";
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
+
         for (var i = 0; i != 3; i++) {
             questionsAndAnswers.add(gcdQuestionAndAnswer());
         }

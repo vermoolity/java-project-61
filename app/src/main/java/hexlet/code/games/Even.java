@@ -18,6 +18,7 @@ public class Even {
         var gameRules = "Answer \'yes\' if the number is even, otherwise answer \'no\'.";
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
+
         for (var i = 0; i != 3; i++) {
             questionsAndAnswers.add(evenQuestionAndAnswer());
         }

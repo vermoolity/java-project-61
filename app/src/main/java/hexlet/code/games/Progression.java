@@ -50,6 +50,7 @@ public class Progression {
         var gameRules = "What number is missing in the progression?";
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
+
         for (var i = 0; i != 3; i++) {
             questionsAndAnswers.add(progressionQuestionAndAnswer());
         }

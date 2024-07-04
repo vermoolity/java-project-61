@@ -42,6 +42,7 @@ public class Calc {
         var gameRules = "What is the result of the expression?";
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
+
         for (var i = 0; i != 3; i++) {
             questionsAndAnswers.add(calcQuestionAndAnswer());
         }
