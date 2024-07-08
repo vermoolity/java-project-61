@@ -15,11 +15,11 @@ public class GCD {
         }
         return numberOne + "";
     }
-    public static String[] gcdQuestionAndAnswer() {
+    public static String[] gcdQuestionAndAnswer(int maxNumber) {
         // Генерируем первое число.
-        var numberOne = RandomNumber.randomEvenNumber();
+        var numberOne = RandomNumber.randomEvenNumber(maxNumber);
         // Генерируем второе число.
-        var numberTwo = RandomNumber.randomEvenNumber();
+        var numberTwo = RandomNumber.randomEvenNumber(maxNumber);
 
         // Создаем вопрос.
         String example = numberOne + " " + numberTwo;
@@ -28,14 +28,14 @@ public class GCD {
         return new String[] {example, correctAnswer};
     }
 
-    public static void gcd() {
+    public static void gcd(int maxNumber) {
 
         var gameRules = "Find the greatest common divisor of given numbers.";
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
 
-        for (var i = 0; i != 3; i++) {
-            questionsAndAnswers.add(gcdQuestionAndAnswer());
+        for (var i = 0; i != Engine.ROUND; i++) {
+            questionsAndAnswers.add(gcdQuestionAndAnswer(maxNumber));
         }
         Engine.engine(gameRules, questionsAndAnswers);
     }

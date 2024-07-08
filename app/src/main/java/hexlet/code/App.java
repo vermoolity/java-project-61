@@ -27,22 +27,22 @@ public class App {
         //Запуск игры.
         switch (choice) {
             case "1":
-                Greet.greeting();
+                Engine.greetingsAndQuestion();
                 break;
             case "2":
-                Even.even();
+                Even.even(100);
                 break;
             case "3":
-                Calc.calculator();
+                Calc.calculator(100);
                 break;
             case "4":
-                GCD.gcd();
+                GCD.gcd(100);
                 break;
             case "5":
-                Progression.progression();
+                Progression.progression(100, 11, 6, 5);
                 break;
             case "6":
-                Prime.prime();
+                Prime.prime(100);
                 break;
             default:
                 break;

@@ -22,7 +22,7 @@ public class Calc {
         return new String[] {example, correctAnswer};
     }
 
-    private static String[] calcQuestionAndAnswer() {
+    private static String[] calcQuestionAndAnswer(int maxNumber) {
         var random = new Random();
 
         String[] operators = {"-",  "+", "*"};
@@ -31,20 +31,20 @@ public class Calc {
         var operator = operators[random.nextInt(operators.length)];
 
         // Сгенерируем случайное первое число.
-        int numberOne = RandomNumber.naturalOrNegativeRandomNumber();
+        int numberOne = RandomNumber.naturalOrNegativeRandomNumber(maxNumber);
         // Сгенерируем случайное второе число.
-        int numberTwo = RandomNumber.naturalOrNegativeRandomNumber();
+        int numberTwo = RandomNumber.naturalOrNegativeRandomNumber(maxNumber);
 
         return calcCreatingAnExampleAndAnswer(operator, numberOne, numberTwo);
     }
-    public static void calculator() {
+    public static void calculator(int maxNumber) {
 
         var gameRules = "What is the result of the expression?";
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
 
-        for (var i = 0; i != 3; i++) {
-            questionsAndAnswers.add(calcQuestionAndAnswer());
+        for (var i = 0; i != Engine.ROUND; i++) {
+            questionsAndAnswers.add(calcQuestionAndAnswer(maxNumber));
         }
 
         Engine.engine(gameRules, questionsAndAnswers);

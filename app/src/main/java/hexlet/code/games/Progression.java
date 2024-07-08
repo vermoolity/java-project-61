@@ -22,14 +22,15 @@ public class Progression {
         // Возвращаем прогруссию.
         return progression;
     }
-    private static String[] progressionQuestionAndAnswer() {
+    private static String[] progressionQuestionAndAnswer(
+            int maxFirstNumber, int maxStepNumber, int maxSize, int minSize) {
         var random = new Random();
         // Сгенерируем случайное первое число прогресии.
-        var firstNumber = RandomNumber.randomNumber();
+        var firstNumber = RandomNumber.randomNumber(maxFirstNumber);
         // Сгенерируем случайную длину прогрессии.
-        var randomSize = RandomNumber.randomNumber(6, 5);
+        var randomSize = RandomNumber.randomNumber(maxSize, minSize);
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
-        var stepNumber  = RandomNumber.randomNumber(11, 1);
+        var stepNumber  = RandomNumber.randomNumber(maxStepNumber);
         // Сгенерируеи прогрессию в виде списка.
         List<String> progression = progression(randomSize, firstNumber, stepNumber);
         // Случаиное число из списка которое нужно найти.
@@ -45,14 +46,14 @@ public class Progression {
         return new String[] {question, secretNumber};
     }
 
-    public static void progression() {
+    public static void progression(int maxFirstNumber, int maxStepNumber, int maxSize, int minSize) {
 
         var gameRules = "What number is missing in the progression?";
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
 
-        for (var i = 0; i != 3; i++) {
-            questionsAndAnswers.add(progressionQuestionAndAnswer());
+        for (var i = 0; i != Engine.ROUND; i++) {
+            questionsAndAnswers.add(progressionQuestionAndAnswer(maxFirstNumber, maxStepNumber, maxSize, minSize));
         }
 
         Engine.engine(gameRules, questionsAndAnswers);
