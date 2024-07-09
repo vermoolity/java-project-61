@@ -21,6 +21,6 @@ public class RandomNumber {
     }
     public static int naturalOrNegativeRandomNumber(int max) {
         var random = new Random();
-        return random.nextInt() % 100;
+        return random.nextInt() % max;
     }
 }

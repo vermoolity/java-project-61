@@ -24,9 +24,6 @@ public class App {
         String choice = scanner.next();
         System.out.println("Your choice: " + choice);
         System.out.println("");
-        var maxStepNumber = 10;
-        var maxSizeProgression = 10;
-        var minSizeProgression = 6;
         //Запуск игры.
         switch (choice) {
             case "1":
