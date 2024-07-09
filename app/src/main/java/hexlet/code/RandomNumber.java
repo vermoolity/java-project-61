@@ -16,7 +16,8 @@ public class RandomNumber {
     }
     // Метод генерирует случайное натуральное или отрицательное число.
     public static int randomNumber(int max, int min) {
-        return (int) (Math.random() * max) + min;
+        max -= min;
+        return (int) (Math.random() * ++max) + min;
     }
     public static int naturalOrNegativeRandomNumber(int max) {
         var random = new Random();

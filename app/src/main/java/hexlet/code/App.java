@@ -39,7 +39,7 @@ public class App {
                 GCD.gcd(100);
                 break;
             case "5":
-                Progression.progression(101, 11, 5, 6);
+                Progression.progression(101, 11, 9, 7);
                 break;
             case "6":
                 Prime.prime(100);
