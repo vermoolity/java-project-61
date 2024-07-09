@@ -6,6 +6,8 @@ import hexlet.code.RandomNumber;
 import java.util.ArrayList;
 
 public class GCD {
+    private static final int MAX_RANDOM_NUMBER = 100;
+    private static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
     // Метод узнает на какой наибольший общий делитель делятся передаваемые числа.
     private static String correctAnswerGCD(int numberOne, int numberTwo) {
         while (numberTwo != 0) {
@@ -15,11 +17,11 @@ public class GCD {
         }
         return numberOne + "";
     }
-    public static String[] gcdQuestionAndAnswer(int maxNumber) {
+    public static String[] gcdQuestionAndAnswer() {
         // Генерируем первое число.
-        var numberOne = RandomNumber.randomEvenNumber(maxNumber);
+        var numberOne = RandomNumber.randomEvenNumber(MAX_RANDOM_NUMBER);
         // Генерируем второе число.
-        var numberTwo = RandomNumber.randomEvenNumber(maxNumber);
+        var numberTwo = RandomNumber.randomEvenNumber(MAX_RANDOM_NUMBER);
 
         // Создаем вопрос.
         String example = numberOne + " " + numberTwo;
@@ -28,15 +30,13 @@ public class GCD {
         return new String[] {example, correctAnswer};
     }
 
-    public static void gcd(int maxNumber) {
-
-        var gameRules = "Find the greatest common divisor of given numbers.";
+    public static void gcd() {
 
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
 
         for (var i = 0; i != Engine.ROUND; i++) {
-            questionsAndAnswers.add(gcdQuestionAndAnswer(maxNumber));
+            questionsAndAnswers.add(gcdQuestionAndAnswer());
         }
-        Engine.engine(gameRules, questionsAndAnswers);
+        Engine.engine(GAME_RULES, questionsAndAnswers);
     }
 }

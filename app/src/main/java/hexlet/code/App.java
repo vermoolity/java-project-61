@@ -24,7 +24,6 @@ public class App {
         String choice = scanner.next();
         System.out.println("Your choice: " + choice);
         System.out.println("");
-        var maxRandomNumber = 100;
         var maxStepNumber = 10;
         var maxSizeProgression = 10;
         var minSizeProgression = 6;
@@ -34,19 +33,19 @@ public class App {
                 Engine.greetingsAndQuestion();
                 break;
             case "2":
-                Even.even(maxRandomNumber);
+                Even.even();
                 break;
             case "3":
-                Calc.calculator(maxRandomNumber);
+                Calc.calculator();
                 break;
             case "4":
-                GCD.gcd(maxRandomNumber);
+                GCD.gcd();
                 break;
             case "5":
-                Progression.progression(maxRandomNumber, maxStepNumber, maxSizeProgression, minSizeProgression);
+                Progression.progression();
                 break;
             case "6":
-                Prime.prime(maxRandomNumber);
+                Prime.prime();
                 break;
             default:
                 break;

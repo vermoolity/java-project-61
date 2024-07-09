@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Progression {
+    private static final int MAX_RANDOM_NUMBER = 100;
+    private  static final int MAX_STEP_NUMBER = 10;
+    private  static final int MAX_SIZE_PROGRESSION = 10;
+    private  static final int MIN_SIZE_PROGRESSION = 6;
+    private static final String GAME_RULES = "What number is missing in the progression?";
+
 
     // Метод генерирует прогрессию.
     private static List<String> listProgression(int size, int firstNumber, int stepNumber) {
@@ -34,15 +40,14 @@ public class Progression {
         }
         return question;
     }
-    private static String[] progressionQuestionAndAnswer(
-            int maxFirstNumber, int maxStepNumber, int maxSize, int minSize) {
+    private static String[] progressionQuestionAndAnswer() {
         var random = new Random();
         // Сгенерируем случайное первое число прогресии.
-        var firstNumber = RandomNumber.randomNumber(maxFirstNumber);
+        var firstNumber = RandomNumber.randomNumber(MAX_RANDOM_NUMBER);
         // Сгенерируем случайную длину прогрессии.
-        var randomSize = RandomNumber.randomNumber(maxSize, minSize);
+        var randomSize = RandomNumber.randomNumber(MAX_SIZE_PROGRESSION, MIN_SIZE_PROGRESSION);
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
-        var stepNumber  = RandomNumber.randomNumber(maxStepNumber);
+        var stepNumber  = RandomNumber.randomNumber(MAX_STEP_NUMBER);
         // Сгенерируеи прогрессию в виде списка.
         List<String> progression = listProgression(randomSize, firstNumber, stepNumber);
         // Случаиное число из списка которое нужно найти.
@@ -51,16 +56,13 @@ public class Progression {
         return new String[] {question, secretNumber};
     }
 
-    public static void progression(int maxFirstNumber, int maxStepNumber, int maxSize, int minSize) {
-
-        var gameRules = "What number is missing in the progression?";
-
+    public static void progression() {
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
 
         for (var i = 0; i != Engine.ROUND; i++) {
-            questionsAndAnswers.add(progressionQuestionAndAnswer(maxFirstNumber, maxStepNumber, maxSize, minSize));
+            questionsAndAnswers.add(progressionQuestionAndAnswer());
         }
 
-        Engine.engine(gameRules, questionsAndAnswers);
+        Engine.engine(GAME_RULES, questionsAndAnswers);
     }
 }
