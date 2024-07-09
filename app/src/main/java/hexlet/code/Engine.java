@@ -18,7 +18,7 @@ public class Engine {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
         userEntersHisName();
-        System.out.println("Hello, " + Engine.userName);
+        System.out.println("Hello, " + Engine.userName + "!");
     }
     private static boolean userResponse(String question, String correctAnswer) {
         Scanner scanner = new Scanner(System.in);
