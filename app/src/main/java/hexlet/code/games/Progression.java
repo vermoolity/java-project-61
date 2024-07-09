@@ -10,7 +10,7 @@ import java.util.Random;
 public class Progression {
 
     // Метод генерирует прогрессию.
-    private static List<String> progression(int size, int firstNumber, int stepNumber) {
+    private static List<String> listProgression(int size, int firstNumber, int stepNumber) {
         ArrayList<String> progression = new ArrayList<String>();
 
         var sequentialNumber = firstNumber;
@@ -22,6 +22,18 @@ public class Progression {
         // Возвращаем прогруссию.
         return progression;
     }
+    private static String stringProgression(List<String> listProgression, String secretNumber) {
+        var question = "";
+        for (var number : listProgression) {
+            if (number.equals(secretNumber)) {
+                question = question + "..";
+            } else {
+                question = question + number;
+            }
+            question = question + " ";
+        }
+        return question;
+    }
     private static String[] progressionQuestionAndAnswer(
             int maxFirstNumber, int maxStepNumber, int maxSize, int minSize) {
         var random = new Random();
@@ -32,17 +44,10 @@ public class Progression {
         // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
         var stepNumber  = RandomNumber.randomNumber(maxStepNumber);
         // Сгенерируеи прогрессию в виде списка.
-        List<String> progression = progression(randomSize, firstNumber, stepNumber);
+        List<String> progression = listProgression(randomSize, firstNumber, stepNumber);
         // Случаиное число из списка которое нужно найти.
         var secretNumber = progression.get(random.nextInt(progression.size()));
-        var question = "";
-        for (var number : progression) {
-            if (number.equals(secretNumber)) {
-                question = question + " " + "..";
-            } else {
-                question = question + " " + number;
-            }
-        }
+        var question = stringProgression(progression, secretNumber);
         return new String[] {question, secretNumber};
     }
 
