@@ -40,14 +40,10 @@ public class Progression {
         }
         return question;
     }
-    private static String[] progressionQuestionAndAnswer() {
+    private static String[] progressionQuestionAndAnswer(int firstNumber,
+                                                         int randomSize,
+                                                         int stepNumber) {
         var random = new Random();
-        // Сгенерируем случайное первое число прогресии.
-        var firstNumber = RandomNumber.randomNumber(MAX_RANDOM_NUMBER);
-        // Сгенерируем случайную длину прогрессии.
-        var randomSize = RandomNumber.randomNumber(MAX_SIZE_PROGRESSION, MIN_SIZE_PROGRESSION);
-        // Сгенерируем случайное число на сколько каждое число будет больше предыдущего числа в данной прогрессии.
-        var stepNumber  = RandomNumber.randomNumber(MAX_STEP_NUMBER);
         // Сгенерируеи прогрессию в виде списка.
         List<String> progression = listProgression(randomSize, firstNumber, stepNumber);
         // Случаиное число из списка которое нужно найти.
@@ -60,7 +56,10 @@ public class Progression {
         ArrayList<String[]> questionsAndAnswers = new ArrayList<String[]>();
 
         for (var i = 0; i != Engine.ROUND; i++) {
-            questionsAndAnswers.add(progressionQuestionAndAnswer());
+            questionsAndAnswers.add(progressionQuestionAndAnswer(
+                    RandomNumber.randomNumber(MAX_RANDOM_NUMBER),
+                    RandomNumber.randomNumber(MAX_SIZE_PROGRESSION, MIN_SIZE_PROGRESSION),
+                    RandomNumber.randomNumber(MAX_STEP_NUMBER)));
         }
 
         Engine.engine(GAME_RULES, questionsAndAnswers);

@@ -8,19 +8,25 @@ import java.util.Random;
 public class Calc {
     private static final int MAX_RANDOM_NUMBER = 100;
     private static final String GAME_RULES = "What is the result of the expression?";
-    public static String[] calcCreatingAnExampleAndAnswer(String operator, int numberOne, int numberTwo) {
-        // Определяем переданный оператор, и создаем пример.
-        String correctAnswer = null;
-
+    // Определяем переданный оператор, и создаем пример.
+    private static int correctAnswerCalc(String operator, int numberOne, int numberTwo) {
+        int correctAnswer = 0;
         if (operator.equals("-")) {
-            correctAnswer = (numberOne - numberTwo) + "";
+            correctAnswer = (numberOne - numberTwo);
         } else if (operator.equals("+")) {
-            correctAnswer = (numberOne + numberTwo) + "";
+            correctAnswer = (numberOne + numberTwo);
         } else if (operator.equals("*")) {
-            correctAnswer = (numberOne * numberTwo) + "";
+            correctAnswer = (numberOne * numberTwo);
         }
-        String example = numberOne + " " + operator + " " + numberTwo;
-
+        return correctAnswer;
+    }
+    // создаём пример в виде строки.
+    public static String creatingAnExample(String operator, int numberOne, int numberTwo) {
+        return numberOne + " " + operator + " " + numberTwo;
+    }
+    public static String[] calcCreatingAnExampleAndAnswer(String operator, int numberOne, int numberTwo) {
+        String correctAnswer = correctAnswerCalc(operator, numberOne, numberTwo) + "";
+        String example = creatingAnExample(operator, numberOne, numberTwo);
         return new String[] {example, correctAnswer};
     }
 

@@ -9,13 +9,13 @@ public class GCD {
     private static final int MAX_RANDOM_NUMBER = 100;
     private static final String GAME_RULES = "Find the greatest common divisor of given numbers.";
     // Метод узнает на какой наибольший общий делитель делятся передаваемые числа.
-    private static String correctAnswerGCD(int numberOne, int numberTwo) {
+    private static int correctAnswerGCD(int numberOne, int numberTwo) {
         while (numberTwo != 0) {
             int a = numberOne % numberTwo;
             numberOne = numberTwo;
             numberTwo = a;
         }
-        return numberOne + "";
+        return numberOne;
     }
     public static String[] gcdQuestionAndAnswer() {
         // Генерируем первое число.
@@ -25,7 +25,8 @@ public class GCD {
 
         // Создаем вопрос.
         String example = numberOne + " " + numberTwo;
-        String correctAnswer = correctAnswerGCD(numberOne, numberTwo);
+        String correctAnswer = correctAnswerGCD(numberOne, numberTwo) + "";
+
         // Возвращаем вопрос и верный ответ.
         return new String[] {example, correctAnswer};
     }
