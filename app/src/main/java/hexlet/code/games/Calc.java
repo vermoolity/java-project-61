@@ -5,7 +5,6 @@ import hexlet.code.RandomNumber;
 import hexlet.code.RandomOperator;
 
 import java.util.ArrayList;
-import java.util.Random;
 public class Calc {
     private static final int MAX_RANDOM_NUMBER = 100;
     private static final String GAME_RULES = "What is the result of the expression?";
@@ -25,7 +24,6 @@ public class Calc {
 
         } else {
             throw new Exception("the operator passed does not match");
-            
         }
 
         return correctAnswer;
@@ -37,7 +35,6 @@ public class Calc {
     public static String[] calcCreatingAnExampleAndAnswer(String operator, int numberOne, int numberTwo) throws Exception {
         String correctAnswer = correctAnswerCalc(operator, numberOne, numberTwo) + "";
         String example = creatingAnExample(operator, numberOne, numberTwo);
-
         return new String[] {example, correctAnswer};
     }
 

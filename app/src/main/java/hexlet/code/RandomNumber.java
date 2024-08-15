@@ -1,6 +1,6 @@
 package hexlet.code;
 import java.util.Random;
-public class RandomNumber{
+public class RandomNumber {
     // Метод генерирует всегда натуральное четное число
     public static int randomEvenNumber(int max) {
         int evenNumber = 1;
