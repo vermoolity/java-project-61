@@ -32,7 +32,9 @@ public class Calc {
     public static String creatingAnExample(String operator, int numberOne, int numberTwo) {
         return numberOne + " " + operator + " " + numberTwo;
     }
-    public static String[] calcCreatingAnExampleAndAnswer(String operator, int numberOne, int numberTwo) throws Exception {
+    public static String[] calcCreatingAnExampleAndAnswer(String operator,
+                                                          int numberOne,
+                                                          int numberTwo) throws Exception {
         String correctAnswer = correctAnswerCalc(operator, numberOne, numberTwo) + "";
         String example = creatingAnExample(operator, numberOne, numberTwo);
         return new String[] {example, correctAnswer};
