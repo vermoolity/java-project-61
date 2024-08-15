@@ -25,17 +25,21 @@ public class Progression {
             sequentialNumber = sequentialNumber + stepNumber;
             progression.add(sequentialNumber + "");
         }
+
         // Возвращаем прогруссию.
         return progression;
     }
     private static String stringProgression(List<String> listProgression, String secretNumber) {
         var question = "";
+
         for (var number : listProgression) {
             if (number.equals(secretNumber)) {
                 question = question + "..";
+
             } else {
                 question = question + number;
             }
+
             question = question + " ";
         }
         return question;
@@ -48,7 +52,9 @@ public class Progression {
         List<String> progression = listProgression(randomSize, firstNumber, stepNumber);
         // Случаиное число из списка которое нужно найти.
         var secretNumber = progression.get(random.nextInt(progression.size()));
+
         var question = stringProgression(progression, secretNumber);
+
         return new String[] {question, secretNumber};
     }
 

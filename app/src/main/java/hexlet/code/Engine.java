@@ -5,22 +5,26 @@ import java.util.Scanner;
 public class Engine {
     public static final int ROUND = 3;
     private static String userName;
+
+    // Метод узнаёт имя и приветствует пользователя
+    public static void greeting() {
+
+        System.out.println("Welcome to the Brain Games!");
+        System.out.println("May I have your name?");
+
+        Scanner scanner = new Scanner(System.in);
+        Engine.userName = scanner.next();
+
+        System.out.println("Hello, " + Engine.userName + "!");
+    }
+
     /*
     Метод который работает с пользователем.
     Если ответ пользователя верный то метод возвращает true.
     Если ответ пользователя неверный то метод возвращает false.
      */
-    public static void userEntersHisName() {
-        Scanner scanner = new Scanner(System.in);
-        Engine.userName = scanner.next();
-    }
-    public static void greetingsAndQuestion() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.println("May I have your name?");
-        userEntersHisName();
-        System.out.println("Hello, " + Engine.userName + "!");
-    }
     private static boolean userResponse(String question, String correctAnswer) {
+
         Scanner scanner = new Scanner(System.in);
 
         //Выводит ворос.
@@ -44,11 +48,12 @@ public class Engine {
         return result;
 
     }
+
     //Движок игры.
     public static void engine(String rules, List<String[]> questionsAndAnswers) {
-        // Количество раундов игры.
         // Приветсвуем пользователя и узнаем его имя.
-        greetingsAndQuestion();
+        greeting();
+
         // Выводим на консоль правила игры.
         System.out.println(rules);
         boolean flag = true;
@@ -63,6 +68,7 @@ public class Engine {
         if (flag) {
             //Выводит строку если пользователь дал верные ответы.
             System.out.println("Congratulations, " + Engine.userName + "!");
+
         } else {
             //Выводит строку если пользователь дал неверный ответ на пример.
             System.out.println("Let's try again, " + Engine.userName + "!");
